@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.myapplication.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="com.example.myapplication.fragments.TrainingFragment"
+        android:label="fragment_training"
+        tools:layout="@layout/fragment_training" >
+        <action
+            android:id="@+id/action_trainingFragment_to_trainingQuestionsFragment"
+            app:destination="@id/trainingQuestionsFragment" />
+        <action
+            android:id="@+id/action_trainingFragment_to_trainingDayFragment"
+            app:destination="@id/trainingDayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="com.example.myapplication.fragments.ProgressFragment"
+        android:label="fragment_progress"
+        tools:layout="@layout/fragment_progress" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.myapplication.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.myapplication.fragments.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" />
+    <fragment
+        android:id="@+id/trainingQuestionsFragment"
+        android:name="com.example.myapplication.fragments.TrainingQuestionsFragment"
+        android:label="fragment_questions"
+        tools:layout="@layout/fragment_training_questions" >
+        <action
+            android:id="@+id/action_trainingQuestionsFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingDayFragment"
+        android:name="com.example.myapplication.fragments.TrainingDayFragment"
+        android:label="fragment_training_day"
+        tools:layout="@layout/fragment_training_day" >
+        <action
+            android:id="@+id/action_trainingDayFragment_to_trainingMuscleFragment"
+            app:destination="@id/trainingMuscleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingMuscleFragment"
+        android:name="com.example.myapplication.fragments.TrainingMuscleFragment"
+        android:label="fragment_training_list"
+        tools:layout="@layout/fragment_training_muscle" />
+</navigation>

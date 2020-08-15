@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity"
+    android:background="@drawable/login">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:text="Athletic \nTraining"
+                    android:fontFamily="@font/yeseva_one"
+                    android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/reg_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:textColor="@color/colorWhite"
+                    android:text="Regresar"
+                    android:gravity="center_vertical|right"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/transparent_form"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:text="Registro"
+                    android:fontFamily="@font/opensans_regular"
+                    android:textSize="20dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/reg_nameField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:hint="Nombre completo"
+                    app:helperTextEnabled="true"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:layout_constraintTop_toBottomOf="@+id/sloganText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/reg_emailField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Correo electrónico"
+                    app:helperTextEnabled="true"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:layout_constraintTop_toBottomOf="@+id/sloganText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/reg_passwordField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Contraseña"
+                    app:helperTextEnabled="true"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/colorWhite"
+                    app:layout_constraintTop_toBottomOf="@+id/sloganText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/reg_confirmField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Confirmar contraseña"
+                    app:helperTextEnabled="true"
+                    android:theme="@style/TextInputLayoutAppearance"
+                    app:endIconMode="password_toggle"
+                    app:endIconTint="@color/colorWhite"
+                    app:layout_constraintTop_toBottomOf="@+id/sloganText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="textPassword"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Spinner
+                    android:id="@+id/genre_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:scrollbarSize="24dp"
+                    android:theme="@style/TextInputLayoutAppearance"/>
+
+                <Spinner
+                    android:id="@+id/country_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:scrollbarSize="24dp"
+                    android:theme="@style/TextInputLayoutAppearance" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_weight="1"
+                        android:id="@+id/reg_dateField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Fecha de nacimiento"
+                        android:theme="@style/TextInputLayoutAppearance"
+                        app:endIconDrawable="@drawable/ic_date"
+                        app:layout_constraintTop_toBottomOf="@+id/sloganText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="true"
+                            android:enabled="false"
+                            android:inputType="text"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <Button
+                        android:id="@+id/date_picker_button"
+                        android:layout_weight="8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:drawableRight="@drawable/ic_date" />
+
+                </LinearLayout>
+
+
+                <Spinner
+                    android:id="@+id/objective_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:scrollbarSize="24dp"
+                    android:theme="@style/TextInputLayoutAppearance"/>
+
+                <Button
+                    android:id="@+id/signInButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/gradient_button"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="Crear cuenta"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@+id/recoverText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/opensans_regular"
+                    android:text="Al crear una cuenta aceptas las políticas \nDe privacidad de Athletyc"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorGray"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

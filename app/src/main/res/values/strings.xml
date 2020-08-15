@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">AC</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="genre_array">
+        <item>Femenino</item>
+        <item>Masculino</item>
+    </string-array>
+
+    <string-array name="country_array">
+        <item>México</item>
+        <item>Colombia</item>
+        <item>Canadá</item>
+        <item>Estados Unidos</item>
+        <item>España</item>
+    </string-array>
+
+    <string-array name="objective_array">
+        <item>Próximamente más deportes</item>
+        <item>Fuerza máxima (Powerlifting)</item>
+        <item>Objetivo 2</item>
+        <item>Objetivo 3</item>
+        <item>Objetivo 4</item>
+    </string-array>
+</resources>
