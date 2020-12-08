@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="textoFila1" type="id"/>
+    <item name="textoFila2" type="id"/>
+    <item name="textoFila3" type="id"/>
+    <item name="textoFila4" type="id"/>
+    <item name="textoFila5" type="id"/>
+</resources>

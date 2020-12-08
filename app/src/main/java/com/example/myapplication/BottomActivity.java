@@ -20,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.myapplication.Dataset.DaoUser;
 import com.example.myapplication.Dataset.FakeDb;
+import com.example.myapplication.Dataset.Series;
 import com.example.myapplication.Dataset.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jaeger.library.StatusBarUtil;
@@ -29,6 +30,7 @@ public class BottomActivity extends AppCompatActivity {
     int id = 0;
     private User user;
     private DaoUser daoUser;
+    private Series seriesUser;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -56,6 +58,7 @@ public class BottomActivity extends AppCompatActivity {
         id = bundle.getInt("id");
         daoUser = new DaoUser(this);
         user = daoUser.getUserById(id);
+        seriesUser = new Series(0,0,0,0,0,0,0,0,0,0,0,0);
 
         // Borrar esto
         Toast.makeText(this, "Bienvenido: " + user.getFullName(), Toast.LENGTH_LONG).show();
@@ -68,4 +71,5 @@ public class BottomActivity extends AppCompatActivity {
     public DaoUser getDaoUser(){
         return daoUser;
     }
+    public Series getSeriesUser() { return seriesUser; }
 }

@@ -1,10 +1,9 @@
 package com.example.myapplication.fragments;
 
+import android.app.ActionBar;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
-import android.graphics.fonts.FontFamily;
-import android.graphics.fonts.FontStyle;
 import android.os.Bundle;
 
 import androidx.core.content.res.ResourcesCompat;
@@ -15,8 +14,10 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -25,13 +26,12 @@ import android.widget.Toast;
 import com.example.myapplication.BottomActivity;
 import com.example.myapplication.Dataset.DaoUser;
 import com.example.myapplication.Dataset.FakeDBWorkout;
-import com.example.myapplication.Dataset.FakeDb;
 import com.example.myapplication.Dataset.ObjectWorkout;
+import com.example.myapplication.Dataset.Series;
 import com.example.myapplication.Dataset.User;
 import com.example.myapplication.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TrainingMuscleFragment extends Fragment {
 
@@ -49,6 +49,7 @@ public class TrainingMuscleFragment extends Fragment {
 
     User user;
     DaoUser daoUser;
+    Series seriesUser;
 
     public TrainingMuscleFragment() {
         // Required empty public constructor
@@ -62,6 +63,7 @@ public class TrainingMuscleFragment extends Fragment {
         BottomActivity bottomActivity = (BottomActivity) getActivity();
         user = bottomActivity.getUser();
         daoUser = bottomActivity.getDaoUser();
+        seriesUser = bottomActivity.getSeriesUser();
     }
 
     @Override
@@ -102,10 +104,10 @@ public class TrainingMuscleFragment extends Fragment {
         list.setStretchAllColumns(true);
         String [] array = {"Ejercicio", "Series", "Reps", "Peso"};
         TableRow row;
-        TextView textView;
+        TextView textView = null;
         EditText editText;
 
-        ArrayList<ObjectWorkout> arrayList = (ArrayList<ObjectWorkout>) FakeDBWorkout.getWorkouts();
+        Spinner test;
 
         // HEADERS de la tabla
         row = new TableRow(getActivity().getBaseContext());
@@ -123,47 +125,91 @@ public class TrainingMuscleFragment extends Fragment {
         }
         list.addView(row);
 
-        // Sumando las series con el puntaje y redondeando por si el puntaje tiene decimal
-        series += user.getInitialScore();
+        // ------------------------------------------------------ OPERACIONES LOCAS ------------------------------------------------------
+        // Obtengo los ejercicios
+        ArrayList<ObjectWorkout> arrayList = (ArrayList<ObjectWorkout>) FakeDBWorkout.getWorkouts();
+
+        // Sumando las series con el puntaje y redondeando por si el puntaje tiene decimal 0.5
+        series += user.getInitialScore() + 9;
+
         if(series % 2 == 0.5F || series %2 == 1.5F)
             series += 0.5F;
 
         // Separando cuántas series al día hará dependiendo de los días de entrenamiento
-        float seriesAlDia;
-        if(user.getTrainingDays() == 3)
-            seriesAlDia = (int)series/3;
-        else
-            seriesAlDia = (int)series / 2;
+        int seriesAlDia;
+        if(user.getTrainingDays() == 3) {
+            if(series % 3 == 1)
+                series -= 1;
+            else if (series %3 == 2)
+                series +=1;
 
-        Toast.makeText(getActivity(), "Series Al día:" +seriesAlDia, Toast.LENGTH_SHORT).show();
+            seriesAlDia = (int) (series / 3);
+        }
+        else {
+            if(series % 2 != 0)
+                series += 1;
 
+            seriesAlDia = (int) series / 2;
+        }
+
+        Toast.makeText(getActivity(), "Totales: " +series + " - Al día: "+seriesAlDia, Toast.LENGTH_SHORT).show();
+
+        // ---------------------------------- SI ALGO QUIERES MODIFICAR QUE SEA AQUÍ PLOX ------------------------------------------------
         // CUERPO de la tabla
-        for (int i = 0; i < seriesAlDia; i++){
+        int i = 0;
+        int restador = arrayList.get(muscleIndex).getWorkoutItems().length-1;
+        // Filas
+        while (restador >= 0){
             row = new TableRow(getActivity().getBaseContext());
+            // Columnas
             for (int j = 0; j<3; j++){
+                // Declaración del textview y sus propiedades
                 textView = new TextView(getActivity().getBaseContext());
                 textView.setGravity(Gravity.CENTER_VERTICAL);
-                textView.setPadding(15, 15, 15, 15);
-                if(j == 0)
-                    textView.setText(arrayList.get(muscleIndex).getWorkoutItems()[i].getExercise());
-                else if (j == 1)
-                    textView.setText(""+series);
-                else if(j == 2)
-                    textView.setText(arrayList.get(muscleIndex).getWorkoutItems()[i].getReps());
+                textView.setPadding(15, 15, 15, 30);
                 textView.setTextColor(Color.WHITE);
                 Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.opensans_regular);
                 textView.setTypeface(typeface);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+                textView.setSingleLine(false);
+
+                test = new Spinner(getActivity().getBaseContext());
+                // Info por posición de columna
+                if(j == 0) {
+                    textView.setText(arrayList.get(muscleIndex).getWorkoutItems()[i].getExercise());
+                    textView.setId(j);
+                }
+                else if (j == 1) {
+                    if(seriesAlDia >= 5)
+                        textView.setText("" + 5);
+                    else
+                        textView.setText(""+seriesAlDia);
+                }
+                else if(j == 2)
+                    textView.setText(arrayList.get(muscleIndex).getWorkoutItems()[i].getReps());
+                // Agrego la info a cada fila
                 row.addView(textView);
             }
+            // Declaración del cuadro de texto y sus propiedades
             editText = new EditText(getActivity().getBaseContext());
             editText.setGravity(Gravity.CENTER_VERTICAL);
-            editText.setText(50 + "lb");
+            //editText.setText(50 + "lb");
+            editText.setText(textView.getText());
             editText.setTextColor(Color.WHITE);
             editText.getBackground().mutate().setColorFilter(getResources().getColor(android.R.color.white), PorterDuff.Mode.SRC_ATOP);
+            // Lo agrego a la fila
             row.addView(editText);
 
+            //Agrego la fila a las existentes
             list.addView(row);
+
+            // Condición para saber cuántos ejercicios quedan
+            if(seriesAlDia > 5)
+                seriesAlDia -= 5;
+            else
+                seriesAlDia -= seriesAlDia;
+            i++;
+            restador --;
         }
 
         return rootView;

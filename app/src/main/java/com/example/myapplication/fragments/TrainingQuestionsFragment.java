@@ -84,6 +84,7 @@ public class TrainingQuestionsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 user.setInitialScore(3);
+                user.setMonitoringScore(3);
                 daoUser.updateUser(user);
                 Toast.makeText(getActivity(), "Puntaje insertado!", Toast.LENGTH_SHORT).show();
                 getActivity().getSupportFragmentManager().popBackStack();

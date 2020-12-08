@@ -10,18 +10,21 @@ import java.util.ArrayList;
 public class DaoUser {
     Context c;
     User user;
+    Series series;
     ArrayList<User> userList;
     SQLiteDatabase sql;
     String bd = "usersBD";
-    String table = "create table if not exists user(id integer primary key autoincrement, full_name text, " +
+    String table_users = "create table if not exists user(id integer primary key autoincrement, full_name text, " +
             "email text, password text, confirm_password text, genre text, country text, birth_day integer, birth_month integer, birth_year integer, objective text," +
             "initial_score float, monitoring_score float, training_days integer)";
 
     public DaoUser(Context c){
         this.c = c;
         sql = c.openOrCreateDatabase(bd, c.MODE_PRIVATE, null);
-        sql.execSQL(table);
+        sql.execSQL(table_users);
         user = new User();
+        // Esto es nuevo
+        //series = new Series();
     }
 
     public boolean insertUser(User user){
@@ -130,4 +133,5 @@ public class DaoUser {
         cv.put("training_days", u.getTrainingDays());
         return (sql.update("user", cv, "id="+u.getId(), null)>0);
     }
+
 }

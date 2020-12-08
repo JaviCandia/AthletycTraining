@@ -18,15 +18,15 @@ public class FakeDBWorkout {
 
         // 1 BICEPS
         WorkoutItem[] bicepsItems = new WorkoutItem[9];
-        bicepsItems[0] = new WorkoutItem("Curl de biceps con supinación", SER_BICEPS, "8 a 10");
-        bicepsItems[1] = new WorkoutItem("Curl de bíceps concentrado con apoyo en muslo", SER_BICEPS, "8 a 10");
-        bicepsItems[2] = new WorkoutItem("Curl de bíceps alterno tipo martillo", SER_BICEPS, "6 a 8");
-        bicepsItems[3] = new WorkoutItem("Curl de bíceps con polea", SER_BICEPS, "10 a 12");
-        bicepsItems[4] = new WorkoutItem("Brazos en cruz con polea alta", SER_BICEPS, "15 a 20");
-        bicepsItems[5] = new WorkoutItem("Curl de bíceps con barra", SER_BICEPS, "6 a 8");
-        bicepsItems[6] = new WorkoutItem("Bíceps en el banco scott con barra", SER_BICEPS, "8 a 10");
-        bicepsItems[7] = new WorkoutItem("Curl de bíceps en el banco scott con mancuerna", SER_BICEPS, "10 a 12");
-        bicepsItems[8] = new WorkoutItem("Curl de biceps con barra y agarre en pronación", SER_BICEPS, "8 a 10");
+        bicepsItems[0] = new WorkoutItem("Curl de biceps\ncon supinación", SER_BICEPS, "8 a 10");
+        bicepsItems[1] = new WorkoutItem("Curl de bíceps\nconcentrado con\napoyo en muslo", SER_BICEPS, "8 a 10");
+        bicepsItems[2] = new WorkoutItem("Curl de bíceps\nalterno tipo\nmartillo", SER_BICEPS, "6 a 8");
+        bicepsItems[3] = new WorkoutItem("Curl de bíceps\ncon polea", SER_BICEPS, "10 a 12");
+        bicepsItems[4] = new WorkoutItem("Brazos en cruz\ncon polea alta", SER_BICEPS, "15 a 20");
+        bicepsItems[5] = new WorkoutItem("Curl de bíceps\ncon barra", SER_BICEPS, "6 a 8");
+        bicepsItems[6] = new WorkoutItem("Bíceps en el banco\nscott con barra", SER_BICEPS, "8 a 10");
+        bicepsItems[7] = new WorkoutItem("Curl de bíceps\nen el banco scott\ncon mancuerna", SER_BICEPS, "10 a 12");
+        bicepsItems[8] = new WorkoutItem("Curl de biceps\ncon barra y agarre\nen pronación", SER_BICEPS, "8 a 10");
         workoutList.add(new ObjectWorkout(0, BICEPS, bicepsItems));
 
         // 2 TRICEPS
